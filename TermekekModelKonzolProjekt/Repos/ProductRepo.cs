@@ -77,14 +77,9 @@ namespace TermekekModelKonzolProjekt.Repos
         }
         public List<Product> GetProductsWithPriceBetweenAmounts(int start, int end)
         {
-            if(start < end)
-            {
-                return _products.Where(product => start < product.Price && product.Price < end).ToList();
-            }
-            else
-            {
-                return _products.Where(product => end < product.Price && product.Price < start).ToList();
-            }
+            return _products
+                    .Where(product => product.Price >= Math.Min(start, end) && product.Price <= Math.Max(start, end))
+                    .ToList();
         }
 
 
