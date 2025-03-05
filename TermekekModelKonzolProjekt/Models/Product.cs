@@ -11,12 +11,14 @@ namespace TermekekModelKonzolProjekt.Models
         public required string Name { get; set; }
         public decimal Price { get; set; }
         public int Amount { get; set; }
-        public string Category { get; set; }
+        public required string Category { get; set; }
 
-        public Product(string name,string category)
+        public Product(string name, string category, decimal price = 0, int amount = 0)
         {
             Name = name;
             Category = category;
+            SetPrice(price);
+            SetAmount(amount);
         }
 
         public void SetPrice(decimal price)
