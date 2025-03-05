@@ -93,5 +93,20 @@ namespace TermekekModelKonzolProjekt.Repos
         {
             return _products.Select(product => product.Category).Distinct().ToList();
         }
+
+
+
+        public Dictionary<string, int> GroupNumberOfProductsByCategories()
+        {
+            return _products
+                .GroupBy(product => product.Category)
+                .ToDictionary(category => category.Key, products => products.Count());
+        }
+        public Dictionary<string, List<Product>> GroupAllProductsByPrice()
+        {
+            return _products
+                .GroupBy(product => product.Price > 500 ? "500 Ft feletti" : "500 Ft alatti")
+                .ToDictionary(category => category.Key, products => products.ToList());
+        }
     }
 }
