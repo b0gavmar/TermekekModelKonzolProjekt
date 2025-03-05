@@ -40,5 +40,20 @@ namespace TermekekModelKonzolProjekt.Repos
                 Console.WriteLine(product);
             }
         }
+
+
+
+        public int GetNumberOfProducts()
+        {
+            return _products.Count;
+        }
+        public int GetProductsOfCategory(string category)
+        {
+            return _products.Where(product => product.Category==category).Count();
+        }
+        public int GetProductsOfHigherPrice(int price)
+        {
+            return _products.Where(product => product.Price > price).Count();
+        }
     }
 }
