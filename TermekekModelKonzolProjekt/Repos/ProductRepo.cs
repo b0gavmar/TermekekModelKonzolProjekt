@@ -47,13 +47,43 @@ namespace TermekekModelKonzolProjekt.Repos
         {
             return _products.Count;
         }
-        public int GetProductsOfCategory(string category)
+        public int GetNumberOfProductsOfCategory(string category)
         {
             return _products.Where(product => product.Category==category).Count();
         }
-        public int GetProductsOfHigherPrice(int price)
+        public int GetNumberOfProductsOfHigherPrice(int price)
         {
             return _products.Where(product => product.Price > price).Count();
+        }
+
+
+
+        public List<Product> GetProductsOfHigherPrice(int price)
+        {
+            return _products.Where(product => product.Price > price).ToList();
+        }
+        public List<Product> GetProductsWithLesserAmount(int amount)
+        {
+            return _products.Where(product => product.Amount <amount).ToList();
+        }
+        public List<Product> GetProductsOfCategory(string category)
+        {
+            return _products.Where(product => product.Category == category).ToList();
+        }
+        public List<Product> GetProductsStartingWith(string nameStart)
+        {
+            return _products.Where(product => product.Name.StartsWith(nameStart)).ToList();
+        }
+        public List<Product> GetProductsWithPriceBetweenAmounts(int start, int end)
+        {
+            if(start < end)
+            {
+                return _products.Where(product => start < product.Price && product.Price > end).ToList();
+            }
+            else
+            {
+                return _products.Where(product => end < product.Price && product.Price > start).ToList();
+            }
         }
     }
 }
