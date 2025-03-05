@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -84,6 +85,13 @@ namespace TermekekModelKonzolProjekt.Repos
             {
                 return _products.Where(product => end < product.Price && product.Price > start).ToList();
             }
+        }
+
+
+
+        public List<string> GetAllCategories()
+        {
+            return _products.Select(product => product.Category).Distinct().ToList();
         }
     }
 }
