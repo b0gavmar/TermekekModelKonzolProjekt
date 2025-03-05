@@ -79,11 +79,11 @@ namespace TermekekModelKonzolProjekt.Repos
         {
             if(start < end)
             {
-                return _products.Where(product => start < product.Price && product.Price > end).ToList();
+                return _products.Where(product => start < product.Price && product.Price < end).ToList();
             }
             else
             {
-                return _products.Where(product => end < product.Price && product.Price > start).ToList();
+                return _products.Where(product => end < product.Price && product.Price < start).ToList();
             }
         }
 
