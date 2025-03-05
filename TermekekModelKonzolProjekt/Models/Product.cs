@@ -33,7 +33,10 @@ namespace TermekekModelKonzolProjekt.Models
 
         public override string ToString()
         {
-            return $"";
+            return  $"A termék neve: {Name}\n" +
+                    $"\t- Ára: {Price}" +
+                    $"\t- Mennyisége: {Amount}" +
+                    $"\t- Kategóriája: {Category}";
         }
     }
 }
