@@ -11,7 +11,7 @@ namespace TermekekModelKonzolProjekt.Repos
     {
         private List<Product> _products = new List<Product>();
 
-        public void addProduct(Product product)
+        public void AddProduct(Product product)
         {
             if (product.Amount > 0)
             {
@@ -19,19 +19,25 @@ namespace TermekekModelKonzolProjekt.Repos
             }
         }
 
-        public void removeProduct(Product product)
+        public void RemoveProduct(Product product)
         {
-            if (product.Amount > 0)
+            if (product.Amount == 0)
             {
                 _products.Remove(product);
             }
         }
 
-        public void getAllProducts()
+        public void ListProducts()
         {
+            if (_products.Count == 0)
+            {
+                Console.WriteLine("Nincs termék a raktárban.");
+                return;
+            }
+
             foreach (Product product in _products)
             {
-                Console.WriteLine(product + "\n");
+                Console.WriteLine(product);
             }
         }
     }

@@ -8,10 +8,10 @@ namespace TermekekModelKonzolProjekt.Models
 {
     public class Product
     {
-        public required string Name { get; set; }
-        public decimal Price { get; set; }
-        public int Amount { get; set; }
-        public required string Category { get; set; }
+        public string Name { get; set; }
+        public decimal Price { get; private set; }
+        public int Amount { get; private set; }
+        public string Category { get; set; }
 
         public Product(string name, string category, decimal price = 0, int amount = 0)
         {
@@ -36,9 +36,9 @@ namespace TermekekModelKonzolProjekt.Models
         public override string ToString()
         {
             return  $"A termék neve: {Name}\n" +
-                    $"\t- Ára: {Price}" +
-                    $"\t- Mennyisége: {Amount}" +
-                    $"\t- Kategóriája: {Category}";
+                    $"\t- Ára: {Price}\n" +
+                    $"\t- Mennyisége: {Amount}db\n" +
+                    $"\t- Kategóriája: {Category}\n";
         }
     }
 }
